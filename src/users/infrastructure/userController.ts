@@ -1,10 +1,8 @@
-import { UserService } from "../application/userService";
 import { Response, Request } from "express";
+import {UserService} from "../application/userService";
 
 export class UserController {
-    constructor(private readonly userService: UserService) {
-
-    }
+    constructor(private readonly userService: UserService) {}
 
     async getUserById(req: Request, res: Response) {
         const userId = req.params.id;
