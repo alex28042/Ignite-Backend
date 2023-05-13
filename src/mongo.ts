@@ -6,7 +6,7 @@ if (!uri) {
     throw new Error("Mongo uri is undefined")
 }
 
-const db: Db = new MongoClient(uri, {
+export const db: Db = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -15,4 +15,3 @@ const db: Db = new MongoClient(uri, {
 }).db("Ignite");
 
 
-module.exports = db;

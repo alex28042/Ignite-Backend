@@ -1,15 +1,15 @@
-import { WelcomeEmailSender } from "../application/welcomeEmailSender";
+import { UserService } from "../application/userService";
 import { Response, Request } from "express";
 
 export class UserController {
-    constructor(private readonly welcomeEmailSender: WelcomeEmailSender) {
+    constructor(private readonly userService: UserService) {
 
     }
 
-    async run(req: Request, res: Response) {
+    async getUserById(req: Request, res: Response) {
         const userId = req.params.id;
 
-        await this.welcomeEmailSender.run(userId);
+        await this.userService.getUserById(userId);
 
         res.status(200).send("Email send")
     }
