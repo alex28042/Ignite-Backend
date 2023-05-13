@@ -1,7 +1,7 @@
 import {WelcomeEmailSender} from "../application/welcomeEmailSender";
 import {UserController} from "./userController";
-import {UserService} from "./userService";
+import {MongoUserRepository} from "./mongoUserRepository";
 
-const userService = new UserService();
+const userService = new MongoUserRepository();
 export const welcomeEmailSender = new WelcomeEmailSender(userService);
 export const userController = new UserController(welcomeEmailSender);
