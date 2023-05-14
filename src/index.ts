@@ -12,5 +12,6 @@ app.listen(PORT, () => {
   console.log(`listening ${PORT}`);
 });
 
+
 app.use(bodyParser.json());
-app.use("/api/v1/users", userRouter)
+app.use("/v1/users", userRouter)
