@@ -1,6 +1,6 @@
 import {UserRepository} from "../domain/userRepository";
 import {User} from "../domain/user";
-import {db} from "../../mongo"
+import {db} from "../../config/infrastructure/mongo"
 import {ObjectId} from "mongodb";
 
 export class MongoUserRepository implements UserRepository {
