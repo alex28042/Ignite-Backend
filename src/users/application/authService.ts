@@ -16,13 +16,16 @@ export class AuthService {
     }
 
     async register(user: User) {
+        if (!user.email) {
+            throw new Error("Error passing email");
+        }
+
         const userRegister = await this.authRepository.register(user);
 
         if (!userRegister) {
             throw new Error("Error creating user");
         }
 
-        console.log(userRegister)
-        return user;
+        return userRegister;
     }
 }

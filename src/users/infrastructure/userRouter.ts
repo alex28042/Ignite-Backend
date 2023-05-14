@@ -1,10 +1,10 @@
 import express from "express";
-import {userController} from "./dependencies";
+import {authenticatedEndpoint, userController} from "./dependencies";
+import {AuthenticatedEndpoint} from "../../middlewares/application/authenticatedEndpoint";
 const userRouter = express.Router();
 
 userRouter
-    .get("/getById/:id", userController.getUserById.bind(userController))
-    .get("/getByEmail/:email", userController.getUserByEmail.bind(userController))
-    .post("/", userController.create.bind(userController));
+    .get("/getById/:id", authenticatedEndpoint.authenticateUser, userController.getUserById.bind(userController))
+    .get("/getByEmail/:email", authenticatedEndpoint.authenticateUser, userController.getUserByEmail.bind(userController))
 
 export { userRouter };

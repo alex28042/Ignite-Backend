@@ -1,6 +1,5 @@
 import { Response, Request } from "express";
 import {UserService} from "../application/userService";
-import {User} from "../domain/user";
 
 export class UserController {
     constructor(private readonly userService: UserService) {}
@@ -21,11 +20,4 @@ export class UserController {
         res.status(200).send({status: "OK", message: { ...user.toJson() }})
     }
 
-    async create(req: Request, res: Response) {
-        const userForInsert =  new User("", req.body.email);
-
-        const user = await this.userService.create(userForInsert);
-
-        res.status(200).send({status: "OK", message: { user }})
-    }
 }

@@ -6,7 +6,7 @@ dotenv.config();
 
 
 export class AuthenticatedEndpoint {
-     authenticateUser = (req: Request, res: Response, next: NextFunction) => {
+     public authenticateUser = (req: Request, res: Response, next: NextFunction) => {
         const authHeader = req.headers["authorization"];
         const token = authHeader && authHeader.split(" ")[1];
         if (!token)
@@ -17,7 +17,7 @@ export class AuthenticatedEndpoint {
                 },
             });
 
-        if (!process.env.ACCESS_TOKEN_SECRET)
+        if (!process.env.ACCESS_TOKEN)
             return res.status(500).send({
                 status: "FAILED",
                 data: {
@@ -26,7 +26,7 @@ export class AuthenticatedEndpoint {
             })
 
 
-        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
             if (err)
                 return res.status(403).send({
                     status: "FAILED",

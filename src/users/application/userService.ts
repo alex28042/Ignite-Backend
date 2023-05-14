@@ -27,18 +27,4 @@ export class UserService {
         console.log("User", user.email);
         return user;
     }
-    async create(user: User) {
-        if (!user || !user.email) {
-            throw new Error("error passing user");
-        }
-
-        const userInserted: string | null = await this.userRepository.create(user);
-
-        if (!userInserted) {
-            throw new Error("userId not found");
-        }
-
-        console.log("User", userInserted);
-        return userInserted;
-    }
 }
