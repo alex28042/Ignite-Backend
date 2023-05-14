@@ -7,14 +7,13 @@ export class UserService {
     constructor(private readonly userRepository: MongoUserRepository) {}
 
     async getUserById(userId: string) {
-        console.log(userId)
         const user: User | null = await this.userRepository.getById(userId);
 
         if (!user) {
             throw new Error("userId not found");
         }
 
-        console.log("User", user.email);
+        console.log("User", user.id);
         return user;
     }
 
@@ -30,7 +29,7 @@ export class UserService {
     }
     async create(user: User) {
         if (!user || !user.email) {
-            throw new Error("User doesnt exists or error passing user");
+            throw new Error("error passing user");
         }
 
         const userInserted: string | null = await this.userRepository.create(user);
@@ -39,7 +38,7 @@ export class UserService {
             throw new Error("userId not found");
         }
 
-        console.log("User", user.email);
+        console.log("User", userInserted);
         return userInserted;
     }
 }

@@ -4,6 +4,6 @@ export class User {
     }
 
     toJson(): Object {
-        return { id: this.id, email: this.email };
+        return { email: this.email };
     }
 }

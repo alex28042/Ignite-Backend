@@ -22,9 +22,9 @@ export class UserController {
     }
 
     async create(req: Request, res: Response) {
-        const userBody =  { ...req.body.email };
+        const userForInsert =  new User("", req.body.email);
 
-        const user = await this.userService.create(userBody);
+        const user = await this.userService.create(userForInsert);
 
         res.status(200).send({status: "OK", message: { user }})
     }
