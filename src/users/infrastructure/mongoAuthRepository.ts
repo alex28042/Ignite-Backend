@@ -3,14 +3,14 @@ import {db} from "../../config/infrastructure/mongo";
 import {User} from "../domain/user";
 
 export class MongoAuthRepository  implements  AuthRepository {
-    async login(email: string): Promise<User | null> {
-        const userLog = await db.collection<User>("users").findOne({email})
+    async login(email: string): Promise<string | null> {
+        const userLogIn = await db.collection<User>("users").findOne({email})
 
-        if (!userLog) {
+        if (!userLogIn) {
             return null;
         }
 
-        return new User(userLog._id.toString(), userLog.email);
+        return userLogIn._id.toString();
     }
 
     async register(user: User): Promise<string | null> {
@@ -28,5 +28,4 @@ export class MongoAuthRepository  implements  AuthRepository {
 
         return userRegistered.insertedId.toString();
     }
-
 }

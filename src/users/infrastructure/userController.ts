@@ -5,7 +5,7 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
     async getUserById(req: Request, res: Response) {
-        const userId = req.params.id;
+        const userId = req.body.user;
 
         const user = await this.userService.getUserById(userId);
 

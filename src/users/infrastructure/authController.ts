@@ -19,7 +19,7 @@ export class AuthController {
             return;
         }
 
-        res.status(200).send({status: "OK", data: { ...user }})
+        res.status(200).send({status: "OK", data: { user }})
     }
 
     async register(req: Request, res: Response) {
