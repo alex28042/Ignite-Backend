@@ -11,7 +11,6 @@ export class AuthService {
       throw new Error("Error login user");
     }
 
-    console.log(user);
     return user;
   }
 

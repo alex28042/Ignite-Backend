@@ -27,7 +27,7 @@ export class MongoEventRepository implements EventRepository {
             return null;
         }
 
-        return new Event(eventDB.title, eventDB.description, eventDB.price, eventDB.artists);
+        return new Event(eventDB._id,eventDB.title, eventDB.description, eventDB.price, eventDB.artists);
     }
 
 }
