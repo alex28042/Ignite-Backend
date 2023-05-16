@@ -14,6 +14,5 @@ export class EventController {
     }
 
     async create(req: Request, res: Response) {
-        const event = new Eve
     }
 }

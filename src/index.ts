@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import {userRouter} from "./users/infrastructure/userRouter";
 import dotenv from "dotenv";
 import {authRouter} from "./users/infrastructure/authRouter";
+import {eventRouter} from "./events/infrastructure/eventRouter";
 
 dotenv.config();
 
@@ -17,3 +18,5 @@ app.listen(PORT, () => {
 app.use(bodyParser.json());
 app.use("/v1/users", userRouter);
 app.use("/v1/auth", authRouter);
+app.use("/v1/events", eventRouter);
+
