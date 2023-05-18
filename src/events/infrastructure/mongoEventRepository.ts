@@ -5,12 +5,6 @@ import {ObjectId} from "mongodb";
 
 export class MongoEventRepository implements EventRepository {
     async create(event: Event): Promise<string | null> {
-        const eventExist = await db.collection<Event>("events").findOne(event);
-
-        if (eventExist) {
-            return null;
-        }
-
         const eventInserted = await db.collection<Event>("events").insertOne(event)
 
         if (!eventInserted) {
@@ -27,7 +21,6 @@ export class MongoEventRepository implements EventRepository {
             return null;
         }
 
-        return new Event(eventDB._id,eventDB.title, eventDB.description, eventDB.price, eventDB.artists);
+        return new Event(eventDB.title, eventDB.description, eventDB.price, eventDB.artists);
     }
-
 }

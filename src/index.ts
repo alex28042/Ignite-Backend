@@ -4,6 +4,7 @@ import {userRouter} from "./users/infrastructure/userRouter";
 import dotenv from "dotenv";
 import {authRouter} from "./users/infrastructure/authRouter";
 import {eventRouter} from "./events/infrastructure/eventRouter";
+import {ticketsRouter} from "./tickets/infrastructure/ticketsRouter";
 
 dotenv.config();
 
@@ -19,4 +20,5 @@ app.use(bodyParser.json());
 app.use("/v1/users", userRouter);
 app.use("/v1/auth", authRouter);
 app.use("/v1/events", eventRouter);
+app.use("/v1/tickets", ticketsRouter);
 

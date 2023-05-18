@@ -3,7 +3,6 @@ import {ObjectId} from "mongodb";
 
 export class Event {
   constructor(
-      readonly _id: ObjectId,
       readonly title: string,
       readonly description: string,
       readonly price: number,
