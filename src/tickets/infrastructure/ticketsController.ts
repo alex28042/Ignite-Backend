@@ -12,7 +12,7 @@ export class TicketsController {
 
         const gigTicketsCreated = await this.ticketsService.create(ticketsGig);
 
-        res.status(200).send({status: "OK", data: {gigTicketsCreated}})
+        res.status(200).send({status: "OK", data: { gigTicketsCreated }})
     }
 
     async getTicketsByGigId(req: Request, res: Response) {

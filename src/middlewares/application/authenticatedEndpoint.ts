@@ -33,7 +33,7 @@ export class AuthenticatedEndpoint {
         return res.status(403).send({
           status: "FAILED",
           data: {
-            message: "No Access 1",
+            message: "No Access",
           },
         });
 
