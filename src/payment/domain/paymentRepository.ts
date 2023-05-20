@@ -1,3 +1,5 @@
+import {Payment} from "./payment";
+
 export interface PaymentRepository {
-    makePayment(quantity: number): Promise<string | null>;
+    makePayment(payment: Payment): Promise<string | null>;
 }
