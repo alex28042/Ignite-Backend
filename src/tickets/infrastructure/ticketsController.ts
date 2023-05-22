@@ -4,8 +4,7 @@ import {TicketsService} from "../application/ticketsService";
 
 export class TicketsController {
 
-    constructor(readonly ticketsService: TicketsService) {
-    }
+    constructor(readonly ticketsService: TicketsService) {}
 
     async create(req: Request, res: Response) {
         const ticketsGig = new Tickets(req.body.id, req.body.tickets, "");
