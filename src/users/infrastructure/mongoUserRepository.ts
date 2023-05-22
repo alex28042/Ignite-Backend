@@ -11,7 +11,7 @@ export class MongoUserRepository implements UserRepository {
             return null;
         }
 
-        return new User(user.email, user.email);
+        return new User(user.email, user.email, user.role);
     }
 
     async getByEmail(email: string): Promise<User | null> {
@@ -21,6 +21,6 @@ export class MongoUserRepository implements UserRepository {
             return null;
         }
 
-        return new User(user._id.toString(), user.email);
+        return new User(user._id.toString(), user.email, user.role);
     }
 }

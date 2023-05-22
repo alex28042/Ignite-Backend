@@ -9,7 +9,7 @@ export class UserController {
 
         const user = await this.userService.getUserById(userId);
 
-        res.status(200).send({status: "OK", message: { ...user.toJson() }})
+        res.status(200).send({status: "OK", message: { ...user }})
     }
 
     async getUserByEmail(req: Request, res: Response) {
@@ -17,7 +17,7 @@ export class UserController {
 
         const user = await this.userService.getUserByEmail(email);
 
-        res.status(200).send({status: "OK", message: { ...user.toJson() }})
+        res.status(200).send({status: "OK", message: { ...user }})
     }
 
 }

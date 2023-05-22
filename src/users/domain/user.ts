@@ -1,9 +1,5 @@
+import {UserRole} from "./userRole";
+
 export class User {
-    constructor(readonly id: string, readonly email: string) {
-
-    }
-
-    toJson(): Object {
-        return { email: this.email };
-    }
+    constructor(readonly id: string, readonly email: string, readonly role: UserRole.USER) {}
 }

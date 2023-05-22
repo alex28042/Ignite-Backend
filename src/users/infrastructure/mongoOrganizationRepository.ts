@@ -29,7 +29,7 @@ export class MongoOrganizationRepository implements OrganizationRepository {
             return null;
         }
 
-        return new Organization(getOrganization.email, getOrganization.password, getOrganization.name);
+        return new Organization(getOrganization.email, getOrganization.password, getOrganization.name, getOrganization.role);
     }
 
 }
