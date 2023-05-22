@@ -13,7 +13,6 @@ export class MongoOrganizationRepository implements OrganizationRepository {
 
         const organizationInserted = await db.collection<Organization>("Organization").insertOne(organization)
 
-
         if (!organizationInserted) {
             return null;
         }
@@ -23,7 +22,6 @@ export class MongoOrganizationRepository implements OrganizationRepository {
 
     async getOrganizationById(organizationId: string): Promise<Organization | null> {
         const getOrganization = await db.collection<Organization>("Organization").findOne({_id: new ObjectId(organizationId)})
-
 
         if (!getOrganization) {
             return null;
