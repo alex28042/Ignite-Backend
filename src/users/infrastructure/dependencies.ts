@@ -8,14 +8,16 @@ import {AuthenticatedEndpoint} from "../../middlewares/application/authenticated
 import {MongoOrganizationRepository} from "./mongoOrganizationRepository";
 import {OrganizationService} from "../application/organizationService";
 import {OrganizationController} from "./organizationController";
+import {TokenService} from "./tokenService";
 
 const mongoUserRepository = new MongoUserRepository();
 export const userService = new UserService(mongoUserRepository);
 export const userController = new UserController(userService);
 
 const mongoAuthRepository = new MongoAuthRepository();
+const tokenService = new TokenService();
 export const authService = new AuthService(mongoAuthRepository);
-export const authController = new AuthController(authService);
+export const authController = new AuthController(authService, tokenService);
 
 export const authenticatedEndpoint = new AuthenticatedEndpoint();
 

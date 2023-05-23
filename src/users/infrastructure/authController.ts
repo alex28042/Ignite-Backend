@@ -3,11 +3,13 @@ import {AuthService} from "../application/authService";
 import {User} from "../domain/user";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv"
+import {UserRole} from "../domain/userRole";
+import {TokenService} from "./tokenService";
 dotenv.config();
 
 export class AuthController {
 
-    constructor(readonly authService: AuthService) {}
+    constructor(readonly authService: AuthService, readonly tokenService: TokenService) {}
 
     async login(req: Request, res: Response) {
         const userEmail = req.body.email;
@@ -19,7 +21,9 @@ export class AuthController {
             return;
         }
 
-        res.status(200).send({status: "OK", data: { user }})
+
+
+        res.status(200).send({status: "OK", data: { token: this.tokenService.generateUserToken(user) }})
     }
 
     async register(req: Request, res: Response) {
@@ -32,6 +36,10 @@ export class AuthController {
             return;
         }
 
-        res.status(200).send({status: "OK", data: { insertedId: jwt.sign(user, process.env.ACCESS_TOKEN) }});
+        const userToken = {
+            token: jwt.sign({user, role: UserRole.USER}, process.env.ACCESS_TOKEN)
+        }
+
+        res.status(200).send({status: "OK", data: { token: this.tokenService.generateUserToken(user) }});
     }
 }
