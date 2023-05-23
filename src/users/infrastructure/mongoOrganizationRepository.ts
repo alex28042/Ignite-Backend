@@ -17,7 +17,7 @@ export class MongoOrganizationRepository implements OrganizationRepository {
             return null;
         }
 
-        return organizationInserted.insertedId.toString()
+        return organizationInserted.insertedId.toString();
     }
 
     async getOrganizationById(organizationId: string): Promise<Organization | null> {

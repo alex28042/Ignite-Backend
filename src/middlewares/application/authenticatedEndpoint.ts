@@ -37,6 +37,8 @@ export class AuthenticatedEndpoint {
           },
         });
 
+
+
       req.body.user = user;
       next();
     });
