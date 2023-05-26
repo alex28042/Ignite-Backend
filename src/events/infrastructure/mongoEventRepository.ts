@@ -2,6 +2,7 @@ import {EventRepository} from "../Domain/eventRepository";
 import {db} from "../../config/infrastructure/mongo";
 import {Event} from "../Domain/event";
 import {ObjectId} from "mongodb";
+import {Tickets} from "../Domain/Tickets";
 
 export class MongoEventRepository implements EventRepository {
     async create(event: Event): Promise<string | null> {
@@ -21,6 +22,6 @@ export class MongoEventRepository implements EventRepository {
             return null;
         }
 
-        return new Event(eventDB.title, eventDB.description, eventDB.price, eventDB.artists, eventDB.ticketPriceRange, eventDB.userId);
+        return new Event(eventDB.title, eventDB.description, eventDB.artists, eventDB.ticketPriceRange, eventDB.userId, new Tickets(eventDB.tickets.numberOfTickets, eventDB.tickets.ticketId));
     }
 }

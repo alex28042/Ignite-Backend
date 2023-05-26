@@ -1,11 +1,16 @@
 import {MongoEventRepository} from "../infrastructure/mongoEventRepository";
 import {Event} from "../Domain/event";
+import {CreateEventTickets} from "./createEventTickets";
 
 export class EventService {
     constructor(private readonly eventRepository: MongoEventRepository) {}
 
     async create(event: Event) {
-        const eventCreated = await this.eventRepository.create(event);
+        const eventWithTicketsCreated = await new CreateEventTickets().ticketsCreator(event);
+
+        console.log(eventWithTicketsCreated);
+
+        const eventCreated = await this.eventRepository.create(eventWithTicketsCreated);
 
         if (!eventCreated) {
             throw new Error("Error login user");

@@ -2,6 +2,7 @@ import {EventService} from "../application/eventService";
 import e, {Request, Response} from "express";
 import {Event} from "../Domain/event";
 import {ObjectId} from "mongodb";
+import {Tickets} from "../Domain/Tickets";
 
 export class EventController {
     constructor(private readonly eventService: EventService) {}
@@ -15,7 +16,7 @@ export class EventController {
     }
 
     async create(req: Request, res: Response) {
-        const event = new Event(req.body.title, req.body.description, req.body.price, req.body.artists, req.body.ticketsPriceRange, req.body.user._id);
+        const event = new Event(req.body.title, req.body.description, req.body.artists, req.body.ticketsPriceRange, req.body.user._id, new Tickets(req.body.numberOfTickets, []));
 
         const eventInserted = await this.eventService.create(event);
 
