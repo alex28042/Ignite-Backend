@@ -15,7 +15,7 @@ export class EventController {
     }
 
     async create(req: Request, res: Response) {
-        const event = new Event(req.body.title, req.body.description, req.body.price, req.body.artists, req.body.ticketsPriceRange);
+        const event = new Event(req.body.title, req.body.description, req.body.price, req.body.artists, req.body.ticketsPriceRange, req.body.user._id);
 
         const eventInserted = await this.eventService.create(event);
 
@@ -23,6 +23,6 @@ export class EventController {
             res.status(404).send({status: "FAILED", message: { message: "Error creating event" }})
         }
 
-        res.status(200).send({ status: "OK", data: { eventInserted }})
+        res.status(200).send({ status: "OK", data: { eventInserted, ...event }})
     }
 }

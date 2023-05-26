@@ -38,6 +38,7 @@ export class AuthenticatedEndpoint {
         });
 
 
+      console.log(user);
 
       req.body.user = user;
       next();

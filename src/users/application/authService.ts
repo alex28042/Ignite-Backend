@@ -21,6 +21,8 @@ export class AuthService {
 
     const userRegister = await this.authRepository.register(user);
 
+
+
     if (!userRegister) {
       throw new Error("Error creating user");
     }

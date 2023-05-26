@@ -8,6 +8,7 @@ export class Event {
       readonly description: string,
       readonly price: number,
       readonly artists: Artist[],
-      readonly ticketPriceRange: TicketPriceRange[]
+      readonly ticketPriceRange: TicketPriceRange[],
+      readonly userId: string
   ) {}
 }
