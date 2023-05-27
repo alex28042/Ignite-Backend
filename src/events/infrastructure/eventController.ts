@@ -16,7 +16,7 @@ export class EventController {
     }
 
     async create(req: Request, res: Response) {
-        const event = new Event(req.body.title, req.body.description, req.body.artists, req.body.ticketsPriceRange, req.body.user._id, new Tickets(req.body.numberOfTickets, []));
+        const event = new Event(req.body.title, req.body.description, req.body.artists, req.body.ticketsPriceRange, req.body.user._id, new Tickets(req.body.numberOfTickets, [], []));
 
         const eventInserted = await this.eventService.create(event);
 
