@@ -25,7 +25,6 @@ export class ArtistController {
             res.status(200).send({status: "OK", data: {...artist}})
         } catch (e) {
             res.status(500).send({status: "FAILED", error: `artist by ${artistName} not found`})
-
         }
     }
     async createArtist(req: Request, res: Response) {
