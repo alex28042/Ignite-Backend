@@ -5,13 +5,31 @@ export class ArtistService {
     constructor(private readonly ArtistRepository: MongoArtistRepository) {}
 
     async getArtistById(artistId: string) {
-        return;
+        const artist = await  this.ArtistRepository.getArtistById(artistId);
+
+        if (!artist) {
+            throw new Error("artist not found")
+        }
+
+        return artist;
     }
 
     async getArtistByName(artistName: string) {
-        return;
+        const artist = await this.ArtistRepository.getArtistByName(artistName);
+
+        if (!artist) {
+            throw new Error("artist not found")
+        }
+
+        return artist;
     }
     async createArtist(artist: Artist) {
-        return;
+        const artistId = await  this.ArtistRepository.createArtist(artist);
+
+        if (!artistId) {
+            throw new Error("artist not found")
+        }
+
+        return artistId;
     }
 }
